@@ -21,6 +21,7 @@ export class Renderer40k implements Renderer {
 
     public static readonly _res: number = 144;
     public static readonly _margin: number = 0;
+    public static readonly _textfontsize = "16px"
 
     private static readonly _bevelSize = 15;
     private readonly _descriptionStartX = 190;
@@ -233,7 +234,7 @@ export class Renderer40k implements Renderer {
         ctx.font = '14px sans-serif';
         var w = 50;
         if (labels) {
-            ctx.font = '16px sans-serif';
+            ctx.font = Renderer40k._textfontsize + ' sans-serif';
             for (let i = 0; i < labels.length; i++) {
                 if (columnWidths) w = columnWidths[i];
                 RenderText(ctx, labels[i], x, this._currentY, w, height, Justification.Center);
@@ -245,7 +246,7 @@ export class Renderer40k implements Renderer {
     }
 
     private renderSpells(ctx: CanvasRenderingContext2D, spells: PsychicPower[], columnWidths: number[] | null): void {
-        ctx.font = '16px sans-serif';
+        ctx.font = Renderer40k._textfontsize + ' sans-serif';
 
         const height = 22;
 
@@ -295,7 +296,7 @@ export class Renderer40k implements Renderer {
     }
 
     private renderExplosion(ctx: CanvasRenderingContext2D, explosions: Explosion[], columnWidths: number[] | null): void {
-        ctx.font = '16px sans-serif';
+        ctx.font = Renderer40k._textfontsize + ' sans-serif';
 
         const height = 22;
 
@@ -334,7 +335,7 @@ export class Renderer40k implements Renderer {
     }
 
     private renderWeapons(ctx: CanvasRenderingContext2D, weapons: Weapon[], columnWidths: number[] | null): void {
-        ctx.font = '16px sans-serif';
+        ctx.font = Renderer40k._textfontsize + ' sans-serif';
 
         const height = 22;
 
@@ -412,7 +413,7 @@ export class Renderer40k implements Renderer {
         ctx.fillRect(x, this._currentY, this._maxWidth, height);
 
         ctx.fillStyle = Renderer40k._blackColor;
-        ctx.font = '16px sans-serif';
+        ctx.font = Renderer40k._textfontsize + ' sans-serif';
 
         if (columnWidths) w = columnWidths[ci++];
         RenderText(ctx, model._name.toString(), x, this._currentY, w, height, Justification.Center);
@@ -461,7 +462,7 @@ export class Renderer40k implements Renderer {
         ctx.font = '14px sans-serif';
         RenderText(ctx, "ABILITIES", this._currentX + 20, this._currentY, 100, 16, Justification.Left);
 
-        ctx.font = '16px serif';
+        ctx.font = Renderer40k._textfontsize + ' serif';
         for (let ab of unit._abilities) {
             const content = ab[0].toUpperCase();
             const desc = ab[1];
@@ -475,7 +476,7 @@ export class Renderer40k implements Renderer {
         ctx.font = '14px sans-serif';
         RenderText(ctx, "RULES", this._currentX + 20, this._currentY, 100, 16, Justification.Left);
 
-        ctx.font = '16px serif';
+        ctx.font = Renderer40k._textfontsize + ' serif';
         for (let rule of unit._rules) {
             const content = rule[0].toUpperCase();
             const desc = rule[1];
@@ -489,7 +490,7 @@ export class Renderer40k implements Renderer {
         ctx.font = '14px sans-serif';
         RenderText(ctx, "KEYWORDS", this._currentX + 20, this._currentY, 100, 16, Justification.Left);
 
-        ctx.font = '16px serif';
+        ctx.font = Renderer40k._textfontsize + ' serif';
         const kwlist = [...unit._keywords];
         const kw = kwlist.join(", ").toLocaleUpperCase();
         this._currentY += 2;
@@ -501,7 +502,7 @@ export class Renderer40k implements Renderer {
         ctx.font = '14px sans-serif';
         RenderText(ctx, "FACTIONS", this._currentX + 20, this._currentY, 100, 16, Justification.Left);
 
-        ctx.font = '16px serif';
+        ctx.font = Renderer40k._textfontsize + ' serif';
         const kwlist = [...unit._factions];
         const kw = kwlist.join(", ").toLocaleUpperCase();
         this._currentY += 2;
@@ -530,7 +531,7 @@ export class Renderer40k implements Renderer {
             ctx.fillRect(x, this._currentY, this._maxWidth, height);
 
             ctx.fillStyle = Renderer40k._blackColor;
-            ctx.font = '16px sans-serif';
+            ctx.font = Renderer40k._textfontsize + ' sans-serif';
             if (columnWidths) w = columnWidths[ci++];
 
             //RenderText(ctx, tracker._name, x, this._currentY, w, height, Justification.Center);
@@ -550,7 +551,7 @@ export class Renderer40k implements Renderer {
         ctx.font = '14px sans-serif';
         RenderText(ctx, "MODELS", this._currentX + 20, this._currentY, 100, 16, Justification.Left);
 
-        ctx.font = '16px serif';
+        ctx.font = Renderer40k._textfontsize + ' serif';
         let modelList = "";
         let mi = 0;
         for (const model of models) {
@@ -589,7 +590,7 @@ export class Renderer40k implements Renderer {
 
                 let currentY = this._currentY;
 
-                ctx.font = '16px serif';
+                ctx.font = Renderer40k._textfontsize + ' serif';
                 ctx.fillStyle = Renderer40k._blackColor;
 
                 this._currentY = RenderParagraph(ctx, model._name, unitNameStartX, this._currentY + (woundBoxSize - 14) / 2, unitNameWidth);
